@@ -1,0 +1,40 @@
+diff --git a/build.gradle b/build.gradle
+index 456ec0d..f8b5579 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -297,6 +297,6 @@ class InvokeMake extends org.gradle.api.tasks.Exec {
+         args "ALT_BOOTDIR=${root.jre.replace('\\', '/')}/.."
+         // Replacing backslashes is essential for Windows!
+         args 'COMPILER_WARNINGS_FATAL=false' // Clang is very serious about warnings
+-        args 'HOTSPOT_BUILD_JOBS=4'
++        args 'HOTSPOT_BUILD_JOBS=1'
+     }
+ }
+diff --git a/gradle.properties b/gradle.properties
+index f740635..3283c73 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -6,7 +6,7 @@ kind=fastdebug
+ #kind=product
+ 
+ # Which flavor of DCEVM to use, full (supports most redefinitons (supported only for JDK7)) or light (more JDK(7,8) versions supported)
+-flavor=light
++flavor=full
+ 
+ # If should use compressed oops (-XX:+UseCompressedOops) or not for testing.
+ oops=compressed
+@@ -33,7 +33,7 @@ targetJre=build/jre
+ #hotspotTag=jdk7u60-b09
+ #hotspotTag=jdk7u71-b01
+ #hotspotTag=jdk7u79-b15
+-#hotspotTag=jdk7u85-b02
++hotspotTag=jdk7u85-b02
+ #hotspotTag=jdk7u111-b01
+ 
+ #hotspotTag=jdk8u31-b13
+@@ -51,4 +51,4 @@ targetJre=build/jre
+ #hotspotTag=jdk8u112-b16
+ #hotspotTag=jdk8u144-b01
+ #hotspotTag=jdk8u152-b16
+-hotspotTag=jdk8u172-b11
++#hotspotTag=jdk8u172-b11
