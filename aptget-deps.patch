@@ -1,0 +1,13 @@
+diff --git a/scripts/aptget-deps.sh b/scripts/aptget-deps.sh
+index fd46045..2345480 100755
+--- a/scripts/aptget-deps.sh
++++ b/scripts/aptget-deps.sh
+@@ -26,7 +26,7 @@ DEBIAN_FRONTEND=noninteractive apt-get --yes --fix-missing install git-core ;
+ DEBIAN_FRONTEND=noninteractive apt-get --yes --fix-missing install mercurial ;
+ DEBIAN_FRONTEND=noninteractive apt-get --yes --fix-missing install tree ;
+ 
+-DEBIAN_FRONTEND=noninteractive apt-get --yes --fix-missing install openjdk-8-jdk ;
++DEBIAN_FRONTEND=noninteractive apt-get --yes --fix-missing install openjdk-7-jdk ;
+ DEBIAN_FRONTEND=noninteractive apt-get --yes --fix-missing install language-pack-en ;
+ 
+ DEBIAN_FRONTEND=noninteractive add-apt-repository ppa:ubuntu-toolchain-r/test -y ;

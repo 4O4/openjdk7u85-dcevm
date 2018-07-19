@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 
-./build-dcevm-light.sh
-./build-dcevm-full.sh
+readonly PROGNAME=$(basename $0)
+readonly PROGDIR=$(readlink -m $(dirname $0))
+readonly ARGS="$@"
+
+${PROGDIR}/build-dcevm-light.sh
+${PROGDIR}/build-dcevm-full.sh

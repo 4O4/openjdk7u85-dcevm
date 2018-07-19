@@ -68,10 +68,13 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     DEBIAN_FRONTEND=noninteractive apt-get --yes install git
     git clone https://github.com/adoptopenjdk/adopt-openjdk-kiss-vagrant.git /home/vagrant/adopt-openjdk-kiss-vagrant
+    cd adopt-openjdk-kiss-vagrant && git apply /vagrant/aptget-deps.patch
+    chown -R vagrant:vagrant /home/vagrant/adopt-openjdk-kiss-vagrant
     sudo /home/vagrant/adopt-openjdk-kiss-vagrant/scripts/datetime-fix.sh
     sudo /home/vagrant/adopt-openjdk-kiss-vagrant/scripts/aptget-deps.sh
-    sudo /var/lib/dpkg/info/ca-certificates-java.postinst configure
-    DEBIAN_FRONTEND=noninteractive apt --yes remove openjdk-8*
-    DEBIAN_FRONTEND=noninteractive apt --yes openjdk-7-jdk
+    export SDKMAN_DIR="/home/vagrant/.sdkman" && curl -s "https://get.sdkman.io" | bash
+    chown -R vagrant:vagrant $SDKMAN_DIR
+    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+    sdk install gradle 4.9
   SHELL
 end
